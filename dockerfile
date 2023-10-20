@@ -10,3 +10,5 @@ RUN echo "deb [arch=$(dpkg --print-architecture) \
 RUN apt-get update && apt-get install -y docker-ce-cli
 USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean docker-workflow"
+RUN publish 8080:8080 --publish 50000:50000 myjenkins-blueocean:2.414.3-1
+RUN build -t myjenkins-blueocean:2.414.3-1
